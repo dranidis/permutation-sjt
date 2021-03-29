@@ -1,9 +1,9 @@
-[![npm version](https://badge.fury.io/js/sjt-permutation.svg)](https://badge.fury.io/js/sjt-permutation)
-[![Build Status](https://travis-ci.com/dranidis/sjt-permutation.svg?branch=main)](https://travis-ci.com/dranidis/sjt-permutation)
-[![Coverage Status](https://coveralls.io/repos/github/dranidis/sjt-permutation/badge.svg)](https://coveralls.io/github/dranidis/sjt-permutation)
-[![Dependencies Status](https://status.david-dm.org/gh/dranidis/sjt-permutation.svg)](https://status.david-dm.org/gh/dranidis/sjt-permutation)
+[![npm version](https://badge.fury.io/js/permutation-sjt.svg)](https://badge.fury.io/js/permutation-sjt)
+[![Build Status](https://travis-ci.com/dranidis/permutation-sjt.svg?branch=main)](https://travis-ci.com/dranidis/permutation-sjt)
+[![Coverage Status](https://coveralls.io/repos/github/dranidis/permutation-sjt/badge.svg)](https://coveralls.io/github/dranidis/permutation-sjt)
+[![Dependencies Status](https://status.david-dm.org/gh/dranidis/permutation-sjt.svg)](https://status.david-dm.org/gh/dranidis/permutation-sjt)
 
-# sjt-permutation
+# permutation-sjt
 
 A quite fast permutation algorithm that does not use a lot of memory, O(n).
 Instead of returning a whole array of permutations, the method `next()` return the next permutation. The boolan method `hasNext()` checks if there is a next permutation.
@@ -31,13 +31,13 @@ https://en.wikipedia.org/wiki/Steinhaus%E2%80%93Johnson%E2%80%93Trotter_algorith
 ## Install
 
 ```
-npm i sjt-permutation
+npm i permutation-sjt
 ```
 
 ## Usage
 
 ```TypeScript
-import { Permutation } from 'sjt-permutation';
+import { Permutation } from 'permutation-sjt';
 
 const p = new Permutation(3);
 
@@ -64,7 +64,7 @@ outputs
 ```
 
 ```TypeScript
-import { Permutation } from 'sjt-permutation';
+import { Permutation } from 'permutation-sjt';
 
 const p = new Permutation(2, 1); // starts numbers from 1
 

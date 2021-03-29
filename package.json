@@ -1,5 +1,5 @@
 {
-  "name": "sjt-permutation",
+  "name": "permutation-sjt",
   "version": "1.0.0",
   "description": "A quite fast non-recursive permutation algorithm, Steinhaus–Johnson–Trotter algorithm (Even's speedup)",
   "main": "dist/index.js",
@@ -22,10 +22,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/dranidis/sjt-permutation.git"
+    "url": "https://github.com/dranidis/permutation-sjt.git"
   },
   "bugs": {
-    "url": "https://github.com/dranidis/sjt-permutation/issues"
+    "url": "https://github.com/dranidis/permutation-sjt/issues"
   },
   "author": "D Dranidis",
   "license": "MIT",
