@@ -1,5 +1,5 @@
 [![npm version](https://badge.fury.io/js/permutation-sjt.svg)](https://badge.fury.io/js/permutation-sjt)
-[![Build Status](https://travis-ci.com/dranidis/permutation-sjt.svg?branch=main)](https://travis-ci.org/github/dranidis/permutation-sjt)
+[![Build Status](https://travis-ci.org/dranidis/permutation-sjt.svg?branch=main)](https://travis-ci.org/github/dranidis/permutation-sjt)
 [![Coverage Status](https://coveralls.io/repos/github/dranidis/permutation-sjt/badge.svg)](https://coveralls.io/github/dranidis/permutation-sjt)
 [![Dependencies Status](https://status.david-dm.org/gh/dranidis/permutation-sjt.svg)](https://status.david-dm.org/gh/dranidis/permutation-sjt)
 
