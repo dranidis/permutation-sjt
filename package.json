@@ -1,6 +1,6 @@
 {
   "name": "permutation-sjt",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A quite fast non-recursive permutation algorithm, Steinhaus–Johnson–Trotter algorithm (Even's speedup)",
   "main": "dist/index.js",
   "types": "dist/index.d.js",

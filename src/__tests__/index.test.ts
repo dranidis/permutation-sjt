@@ -90,12 +90,13 @@ test.each([
   expect(next).toEqual(arr);
 });
 
-test('25 seq is undefined', () => {
+test('after termination throws an error', () => {
   const p = new Permutation(4, 1);
-  let next: number[] | undefined = [];
-  const iterations = 25;
-  for (let i = 0; i < iterations; i++) next = p.next();
-  expect(next).toBeUndefined();
+  const iterations = 24;
+  for (let i = 0; i < iterations; i++) p.next();
+  expect(() => {
+    p.next();
+  }).toThrow();
 });
 
 test('generate for 3', () => {

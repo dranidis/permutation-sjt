@@ -51,9 +51,9 @@ export class Permutation {
    *
    * @returns the next permutation or undefined
    */
-  next(): number[] | undefined {
+  next(): number[] {
     if (this.terminated) {
-      return undefined;
+      throw new Error('next(): there is no next permutation');
     }
     const copy = this.numbers.slice();
     this.generateNext();

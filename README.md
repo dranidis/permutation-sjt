@@ -8,7 +8,18 @@
 A quite fast permutation algorithm that does not use a lot of memory, O(n).
 Instead of returning a whole array of permutations, the method `next()` return the next permutation. The boolan method `hasNext()` checks if there is a next permutation.
 
-The arrays returned by `next()` can be used as the indices for the array to be permuted.
+The arrays returned by `next()` can be used as the indices for the array to be permuted. For example we can use map as in the following example to get a permutation of an array:
+
+```TypeScript
+const arr = ['A', 'B', 'C'];
+
+const p = new Permutation(arr.length);
+
+while (p.hasNext()) {
+  const arrPermutation = p.next().map((i) => arr[i]);
+  ...
+}
+```
 
 ## Steinhaus–Johnson–Trotter algorithm (Even's speedup)
 
