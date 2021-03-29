@@ -1,7 +1,7 @@
 {
   "name": "sjt-permutation",
   "version": "1.0.0",
-  "description": "UPDATE ME!!!!!",
+  "description": "A quite fast non-recursive permutation algorithm, Steinhaus–Johnson–Trotter algorithm (Even's speedup)",
   "main": "dist/index.js",
   "types": "dist/index.d.js",
   "scripts": {
@@ -13,7 +13,12 @@
     "lint": "eslint . --ext .ts"
   },
   "keywords": [
-    "UPDATE ME!!!"
+    "permute",
+    "permutation",
+    "Even",
+    "algorithm",
+    "iterative",
+    "Steinhaus–Johnson–Trotter"
   ],
   "repository": {
     "type": "git",

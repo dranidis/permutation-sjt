@@ -6,7 +6,9 @@
 # sjt-permutation
 
 A quite fast permutation algorithm that does not use a lot of memory, O(n).
-Instead of returning a whole array of permutations, the method `next()` return the next permutation. The boolan method `hasNext()` checks if there is a next permutation. The arrays returned by `next()` can be used as the indices for the array to be permuted.
+Instead of returning a whole array of permutations, the method `next()` return the next permutation. The boolan method `hasNext()` checks if there is a next permutation.
+
+The arrays returned by `next()` can be used as the indices for the array to be permuted.
 
 ## Steinhaus–Johnson–Trotter algorithm (Even's speedup)
 
@@ -51,12 +53,32 @@ console.log(permutations);
 outputs
 
 ```
-[
-  [ 1, 2, 3 ],
-  [ 1, 3, 2 ],
-  [ 3, 1, 2 ],
-  [ 3, 2, 1 ],
-  [ 2, 3, 1 ],
-  [ 2, 1, 3 ]
-]
+    [
+      [ 0, 1, 2 ],
+      [ 0, 2, 1 ],
+      [ 2, 0, 1 ],
+      [ 2, 1, 0 ],
+      [ 1, 2, 0 ],
+      [ 1, 0, 2 ]
+    ]
+```
+
+```TypeScript
+import { Permutation } from 'sjt-permutation';
+
+const p = new Permutation(2, 1); // starts numbers from 1
+
+const permutations = [];
+
+while (p.hasNext()) {
+  permutations.push(p.next());
+}
+
+console.log(permutations);
+```
+
+outputs
+
+```
+[ [ 1, 2 ], [ 2, 1 ] ]
 ```
