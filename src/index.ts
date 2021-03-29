@@ -3,11 +3,16 @@
  * https://en.wikipedia.org/wiki/Steinhaus%E2%80%93Johnson%E2%80%93Trotter_algorithm
  *
  *
- * A subsequent improvement by Shimon Even provides an improvement to the running time
+ * The Steinhaus–Johnson–Trotter algorithm or Johnson–Trotter algorithm generates
+ * all of the permutations of n elements. Each permutation in the sequence that
+ * it generates differs from the previous permutation by swapping two adjacent
+ * elements of the sequence.
+ *
+ * An improvement of the Steinhaus–Johnson–Trotter algorithm by Shimon Even
+ * provides an improvement to the running time
  * of the algorithm by storing additional information for each element in the
  * permutation: its position, and a direction (positive, negative, or zero) in which
- * it is currently moving (essentially, this is the same information computed using
- * the parity of the permutation in Johnson's version of the algorithm).
+ * it is currently moving.
  */
 export class Permutation {
   private numbers: number[] = [];
@@ -17,18 +22,35 @@ export class Permutation {
    *
    * @param n numbers in the arrray 1..n
    */
-  constructor(private n: number) {
+  constructor(private n: number, start = 0) {
+    if (n < 0) throw new Error('Permutation constructor expects a positive number');
     /**
      * Initially, the direction of the number 1 is zero,
      * and all other elements have a negative direction
      */
     for (let i = 0; i < n; i++) {
-      this.numbers?.push(i + 1);
+      this.numbers.push(i + start);
       if (i === 0) this.directions.push(0);
       else this.directions.push(-1);
     }
   }
 
+  /**
+   * Checks if there is a permutation to return.
+   *
+   * @returns
+   */
+  hasNext(): boolean {
+    return !this.terminated;
+  }
+  /**
+   * Returns the next permutation of the Steinhaus–Johnson–Trotter algorithm,
+   * starting with [1,2,3, ..., n].
+   *
+   * Returns undefined if the permutations have been exhausted.
+   *
+   * @returns the next permutation or undefined
+   */
   next(): number[] | undefined {
     if (this.terminated) {
       return undefined;

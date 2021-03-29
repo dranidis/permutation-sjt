@@ -1,7 +1,29 @@
 import { Permutation } from '../';
 
+test('throws error on constructor if number negative', () => {
+  expect(() => {
+    new Permutation(-1);
+  }).toThrow();
+});
+
+test('n = 0 has one permutation []', () => {
+  const p = new Permutation(0);
+  let next: number[] | undefined = [];
+  next = p.next();
+  expect(next).toEqual([]);
+  expect(p.hasNext()).toBe(false);
+});
+
+test('n = 1 has one permutation [0] if start = 0', () => {
+  const p = new Permutation(1);
+  let next: number[] | undefined = [];
+  next = p.next();
+  expect(next).toEqual([0]);
+  expect(p.hasNext()).toBe(false);
+});
+
 test('1st', () => {
-  const p = new Permutation(4);
+  const p = new Permutation(4, 1);
   let next: number[] | undefined = [];
   const iterations = 1;
   for (let i = 0; i < iterations; i++) next = p.next();
@@ -9,7 +31,7 @@ test('1st', () => {
 });
 
 test('2nd', () => {
-  const p = new Permutation(4);
+  const p = new Permutation(4, 1);
   let next: number[] | undefined = [];
   const iterations = 2;
   for (let i = 0; i < iterations; i++) next = p.next();
@@ -17,7 +39,7 @@ test('2nd', () => {
 });
 
 test('3rd', () => {
-  const p = new Permutation(4);
+  const p = new Permutation(4, 1);
   let next: number[] | undefined = [];
   const iterations = 3;
   for (let i = 0; i < iterations; i++) next = p.next();
@@ -25,7 +47,7 @@ test('3rd', () => {
 });
 
 test('4rd', () => {
-  const p = new Permutation(4);
+  const p = new Permutation(4, 1);
   let next: number[] | undefined = [];
   const iterations = 4;
   for (let i = 0; i < iterations; i++) next = p.next();
@@ -33,7 +55,7 @@ test('4rd', () => {
 });
 
 test('5th - 4 is zeroed - 3 moves (at the end 4 has direction positive)', () => {
-  const p = new Permutation(4);
+  const p = new Permutation(4, 1);
   let next: number[] | undefined = [];
   const iterations = 5;
   for (let i = 0; i < iterations; i++) next = p.next();
@@ -61,7 +83,7 @@ test.each([
   [23, [2, 1, 4, 3]],
   [24, [2, 1, 3, 4]],
 ])('%i-th seq is %p', (n, arr) => {
-  const p = new Permutation(4);
+  const p = new Permutation(4, 1);
   let next: number[] | undefined = [];
   const iterations = n;
   for (let i = 0; i < iterations; i++) next = p.next();
@@ -69,18 +91,18 @@ test.each([
 });
 
 test('25 seq is undefined', () => {
-  const p = new Permutation(4);
+  const p = new Permutation(4, 1);
   let next: number[] | undefined = [];
   const iterations = 25;
   for (let i = 0; i < iterations; i++) next = p.next();
   expect(next).toBeUndefined();
 });
 
-// test('generate for 5', () => {
-//   const p = new Permutation(5);
-//   let next: number[] | undefined = p.next();
-//   while (next !== undefined) {
-//     console.log(next);
-//     next = p.next();
-//   }
-// });
+test('generate for 3', () => {
+  const permutations = [];
+  const p = new Permutation(3, 1);
+  while (p.hasNext()) {
+    permutations.push(p.next());
+  }
+  expect(permutations.length).toBe(6);
+});

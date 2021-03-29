@@ -3,8 +3,27 @@
 [![Coverage Status](https://coveralls.io/repos/github/dranidis/sjt-permutation/badge.svg)](https://coveralls.io/github/dranidis/sjt-permutation)
 [![Dependencies Status](https://status.david-dm.org/gh/dranidis/sjt-permutation.svg)](https://status.david-dm.org/gh/dranidis/sjt-permutation)
 
-# Steinhaus–Johnson–Trotter algorithm (Even's speedup)
+# sjt-permutation
 
+A quite fast permutation algorithm that does not use a lot of memory, O(n).
+Instead of returning a whole array of permutations, the method `next()` return the next permutation. The boolan method `hasNext()` checks if there is a next permutation. The arrays returned by `next()` can be used as the indices for the array to be permuted.
+
+## Steinhaus–Johnson–Trotter algorithm (Even's speedup)
+
+The Steinhaus–Johnson–Trotter algorithm or Johnson–Trotter algorithm generates
+all of the permutations of n elements. Each permutation in the sequence that
+it generates differs from the previous permutation by swapping two adjacent
+elements of the sequence.
+
+An improvement of the Steinhaus–Johnson–Trotter algorithm by Shimon Even
+provides an improvement to the running time
+of the algorithm by storing additional information for each element in the
+permutation: its position, and a direction (positive, negative, or zero) in which
+it is currently moving.
+
+This algorithm takes time O(i) for every step in which the greatest number to move is n − i + 1.
+
+For more information visit:
 https://en.wikipedia.org/wiki/Steinhaus%E2%80%93Johnson%E2%80%93Trotter_algorithm
 
 ## Install
@@ -14,3 +33,30 @@ npm i sjt-permutation
 ```
 
 ## Usage
+
+```TypeScript
+import { Permutation } from 'sjt-permutation';
+
+const p = new Permutation(3);
+
+const permutations = [];
+
+while (p.hasNext()) {
+  permutations.push(p.next());
+}
+
+console.log(permutations);
+```
+
+outputs
+
+```
+[
+  [ 1, 2, 3 ],
+  [ 1, 3, 2 ],
+  [ 3, 1, 2 ],
+  [ 3, 2, 1 ],
+  [ 2, 3, 1 ],
+  [ 2, 1, 3 ]
+]
+```
