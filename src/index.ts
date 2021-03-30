@@ -70,7 +70,6 @@ export class Permutation {
    */
   private generateNext() {
     const index = this.findMaxWithDirection();
-    console.log(index);
     if (index !== -1) this.swapWithNextElementInDirection(index);
     else this.terminated = true;
   }
