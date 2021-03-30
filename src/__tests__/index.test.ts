@@ -107,3 +107,17 @@ test('generate for 3', () => {
   }
   expect(permutations.length).toBe(6);
 });
+
+test('stress generate', () => {
+  const p = new Permutation(12, 1);
+  while (p.hasNext()) {
+    p.next();
+  }
+});
+
+test('stress generate 2', () => {
+  const p = new Permutation(12, 1);
+  while (p.hasNext()) {
+    p.next();
+  }
+});

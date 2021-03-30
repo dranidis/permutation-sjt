@@ -59,7 +59,7 @@ export class Permutation {
     }
     const copy = this.numbers.slice();
     this.generateNext();
-    return copy.map((i) => i + this.start);
+    return copy;
   }
 
   /**
@@ -69,17 +69,24 @@ export class Permutation {
    * When all numbers become unmarked, the algorithm terminates.
    */
   private generateNext() {
-    const index = this.findMaxWithDirection();
+    // const index = this.findMaxWithDirection();
+    let index = -1;
+    for (let i = this.n - 1; i >= 0; i--) {
+      if (this.directions[i] !== 0) {
+        index = this.positions[i];
+        break;
+      }
+    }
     if (index !== -1) this.swapWithNextElementInDirection(index);
     else this.terminated = true;
   }
 
-  private findMaxWithDirection(): number {
-    for (let i = this.n - 1; i >= 0; i--) {
-      if (this.directions[i] !== 0) return this.positions[i];
-    }
-    return -1;
-  }
+  // private findMaxWithDirection(): number {
+  //   for (let i = this.n - 1; i >= 0; i--) {
+  //     if (this.directions[i] !== 0) return this.positions[i];
+  //   }
+  //   return -1;
+  // }
 
   private swapWithNextElementInDirection(index: number) {
     // precondition this.directions[index] not 0
