@@ -30,7 +30,7 @@ export class Permutation {
      * and all other elements have a negative direction
      */
     for (let i = 0; i < n; i++) {
-      this.numbers.push(i + start);
+      this.numbers.push(i);
       this.positions.push(i);
       if (i === 0) this.directions.push(0);
       else this.directions.push(-1);
@@ -59,7 +59,7 @@ export class Permutation {
     }
     const copy = this.numbers.slice();
     this.generateNext();
-    return copy;
+    return copy.map((i) => i + this.start);
   }
 
   /**
@@ -76,8 +76,8 @@ export class Permutation {
   }
 
   private findMaxWithDirection(): number {
-    for (let i = this.n - 1 + this.start; i >= 0 + this.start; i--) {
-      if (this.directions[i - this.start] !== 0) return this.positions[i - this.start];
+    for (let i = this.n - 1; i >= 0; i--) {
+      if (this.directions[i] !== 0) return this.positions[i];
     }
     return -1;
   }
@@ -88,18 +88,12 @@ export class Permutation {
      * swaps it in the indicated direction
      */
     const number = this.numbers[index];
-    const newIndex = index + this.directions[number - this.start];
+    const newIndex = index + this.directions[number];
+    const otherNumber = this.numbers[newIndex];
 
-    [this.positions[number - this.start], this.positions[this.numbers[newIndex] - this.start]] = [
-      this.positions[this.numbers[newIndex] - this.start],
-      this.positions[number - this.start],
-    ];
+    [this.positions[number], this.positions[otherNumber]] = [this.positions[otherNumber], this.positions[number]];
     [this.numbers[newIndex], this.numbers[index]] = [this.numbers[index], this.numbers[newIndex]];
 
-    console.log(this.numbers);
-    console.log(this.positions);
-
-    // [this.directions[newIndex], this.directions[index]] = [this.directions[index], this.directions[newIndex]];
     /**
      * If this causes the chosen element to reach the first or last position
      * within the permutation, or if the next element in the same direction
@@ -108,11 +102,10 @@ export class Permutation {
     if (
       newIndex === 0 ||
       newIndex === this.numbers.length - 1 ||
-      this.numbers[newIndex] < this.numbers[newIndex + this.directions[number - this.start]]
+      this.numbers[newIndex] < this.numbers[newIndex + this.directions[number]]
     ) {
-      this.directions[number - this.start] = 0;
+      this.directions[number] = 0;
     }
-    console.log('DIR: ' + this.directions);
 
     /**
      * After each step, all elements greater than the chosen element
@@ -121,13 +114,9 @@ export class Permutation {
      * */
     for (let i = 0; i < this.numbers.length; i++) {
       if (i === newIndex) continue;
-      if (i < newIndex && this.numbers[i] > this.numbers[newIndex]) {
-        this.directions[this.numbers[i] - this.start] = 1;
-      }
-      if (i > newIndex && this.numbers[i] > this.numbers[newIndex]) {
-        this.directions[this.numbers[i] - this.start] = -1;
+      if (this.numbers[i] > this.numbers[newIndex]) {
+        this.directions[this.numbers[i]] = i < newIndex ? 1 : -1;
       }
     }
-    console.log('DIR: ' + this.directions);
   }
 }
