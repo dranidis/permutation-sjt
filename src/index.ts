@@ -57,9 +57,10 @@ export class Permutation {
     if (this.terminated) {
       throw new Error('next(): there is no next permutation');
     }
-    const copy = this.numbers.slice();
+    const copy = this.numbers.slice(0);
     this.generateNext();
-    return copy;
+    if (this.start > 0) return copy.map((i) => i + this.start);
+    else return copy;
   }
 
   /**
@@ -69,7 +70,7 @@ export class Permutation {
    * When all numbers become unmarked, the algorithm terminates.
    */
   private generateNext() {
-    // const index = this.findMaxWithDirection();
+    // findMaxWithDirection;
     let index = -1;
     for (let i = this.n - 1; i >= 0; i--) {
       if (this.directions[i] !== 0) {
@@ -77,16 +78,10 @@ export class Permutation {
         break;
       }
     }
+    // swap
     if (index !== -1) this.swapWithNextElementInDirection(index);
     else this.terminated = true;
   }
-
-  // private findMaxWithDirection(): number {
-  //   for (let i = this.n - 1; i >= 0; i--) {
-  //     if (this.directions[i] !== 0) return this.positions[i];
-  //   }
-  //   return -1;
-  // }
 
   private swapWithNextElementInDirection(index: number) {
     // precondition this.directions[index] not 0
