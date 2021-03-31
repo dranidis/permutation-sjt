@@ -6,9 +6,12 @@
 # permutation-sjt
 
 A quite fast permutation algorithm that does not use a lot of memory, O(n).
-Instead of returning a whole array of permutations, the method `next()` return the next permutation. The boolan method `hasNext()` checks if there is a next permutation.
 
-The arrays returned by `next()` can be used as the indices for the array to be permuted. For example we can use map as in the following example to get a permutation of an array:
+Instead of returning a whole array of permutations, the method `next()` returns the next permutation. Each permutation is based on the previous and is calculated quickly.
+
+The boolean method `hasNext()` checks if there is a next permutation.
+
+The array returned by `next()` can be used as the indices for the actual array to be permuted. For example we can use map as in the following example to get a permutation of the actual array:
 
 ```TypeScript
 const arr = ['A', 'B', 'C'];
@@ -20,6 +23,14 @@ while (p.hasNext()) {
   ...
 }
 ```
+
+## Run-time performance
+
+If you need to generate ALL permutations with a loop like the one above, the complexity is `O(n!)`:
+
+- Performs well with `n < 13`.
+- `n = 13` takes several minutes to complete.
+- No problems with memory, `O(n)`.
 
 ## Steinhaus–Johnson–Trotter algorithm (Even's speedup)
 

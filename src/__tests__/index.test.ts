@@ -109,7 +109,7 @@ test('generate for 3', () => {
 });
 
 test.skip('stress generate', () => {
-  const p = new Permutation(12);
+  const p = new Permutation(13);
   while (p.hasNext()) {
     p.next();
   }
